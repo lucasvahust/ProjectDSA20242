@@ -733,7 +733,7 @@ def authenticate(callback):
     role_menu = ttk.Combobox(login_window, textvariable=role_var, values=["Quản thư", "Sinh viên"], state="readonly", width=20)
     role_menu.grid(row=0, column=1, padx=5, pady=10, sticky="w")
     
-    tk.Label(login_window, text="Tên người dùng:", width=15, anchor="e").grid(row=1, column=0, padx=5, pady=10, sticky="e")
+    tk.Label(login_window, text="Tên đăng nhập:", width=15, anchor="e").grid(row=1, column=0, padx=5, pady=10, sticky="e")
     username_entry = tk.Entry(login_window, width=23)
     username_entry.grid(row=1, column=1, padx=5, pady=10, sticky="w")
     
@@ -755,7 +755,7 @@ def authenticate(callback):
         password = password_entry.get().strip()
         
         if not username or not password:
-            messagebox.showerror("Lỗi", "Vui lòng nhập đầy đủ tên người dùng và mật khẩu!")
+            messagebox.showerror("Lỗi", "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!")
             return
 
         authenticated = False
@@ -778,7 +778,7 @@ def authenticate(callback):
             remaining = max_attempts - login_attempts[0]
             logging.warning(f"Đăng nhập thất bại - Vai trò: {current_role}, Username: {username} vào {datetime.now()}")
             if remaining > 0:
-                messagebox.showerror("Lỗi", f"Tên người dùng hoặc mật khẩu sai! Còn {remaining} lần thử.")
+                messagebox.showerror("Lỗi", f"Tên đăng nhập hoặc mật khẩu sai! Còn {remaining} lần thử.")
                 username_entry.delete(0, tk.END)
                 password_entry.delete(0, tk.END)
             else:
